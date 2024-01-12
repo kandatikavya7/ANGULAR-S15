@@ -1,0 +1,10 @@
+<input type="text" [(ngModel)]="filterText" placeholder="Filter customers" />
+    
+    <div *ngFor="let customer of customers | customerFilter: filterText">
+      {{ customer.name }}
+      <button (click)="showOrders(customer.id)">Show Orders</button>
+    </div>
+
+    <div *ngIf="showOrdersFlag">
+      <app-orders [customerId]="selectedCustomerId"></app-orders>
+    </div>
